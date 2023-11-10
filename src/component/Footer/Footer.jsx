@@ -23,7 +23,7 @@ const Footer = () => {
                 </div>
             </div>
             <div className="bg-[#151515] text-white text-center py-6">
-                <h2>Copyright © CulinaryCloud. All rights reserved.</h2>
+                <h2>Copyright © CulinaryCloud. All rights reserved</h2>
             </div>
         </footer>
     );
