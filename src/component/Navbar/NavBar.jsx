@@ -1,4 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
+import cartimage from '../../assets/icon/151-1511569_cart-notifications-free-shopping-cart-favicon-hd-png-removebg-preview.png';
+import userImage from '../../assets/icon/user.png';
 const NavBar = () => {
     const navItem = <>
         <li><NavLink to="/">Home</NavLink></li>
@@ -9,7 +11,7 @@ const NavBar = () => {
     </>
     return (
         <>
-            <div className="navbar fixed top-0 z-10 bg-base-200 max-w-7xl mx-auto">
+            <div className="navbar fixed top-0 z-10  bg-base-200">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -20,8 +22,8 @@ const NavBar = () => {
                         </ul>
                     </div>
                     <Link to="/">
-                        <h2>BISTRO BOSS</h2>
-                        <h4>RESTURENT</h4>
+                        <h2 className="font-bold">BISTRO BOSS</h2>
+                        <h4 className="font-bold">RESTURENT</h4>
                     </Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
@@ -30,7 +32,11 @@ const NavBar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <button className="btn btn-ghost">Login</button>
+                    <img className="w-[60px] mr-5" src={cartimage} alt="" />
+                    <Link to="/login">
+                        <button className="bg-[#ff3438] text-white px-7 py-2 rounded-lg font-bold">Login</button>
+                    </Link>
+                    <img className="w-[60px] rounded-full ml-5" src={userImage} alt="" />
                 </div>
             </div>
         </>
