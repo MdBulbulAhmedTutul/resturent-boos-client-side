@@ -3,6 +3,7 @@ import Category from "../Category/Category";
 import Featured from "../Featured/Featured";
 import PopularMenu from "../PopularMenu/PopularMenu";
 import SubBanner from "../SubBanner/SubBanner";
+import Testimonials from "../Testimonials/Testimonials";
 
 const Home = () => {
     return (
@@ -33,6 +34,9 @@ const Home = () => {
             </div>
             <div className="my-16">
                 <Featured></Featured>
+            </div>
+            <div className="max-w-7xl mx-auto">
+                <Testimonials></Testimonials>
             </div>
         </div>
     );
