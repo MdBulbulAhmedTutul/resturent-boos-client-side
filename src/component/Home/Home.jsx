@@ -2,16 +2,15 @@ import Banner from "../Banner/Banner";
 import Category from "../Category/Category";
 import Featured from "../Featured/Featured";
 import PopularMenu from "../PopularMenu/PopularMenu";
-import SubBanner from "../SubBanner/SubBanner";
 import Testimonials from "../Testimonials/Testimonials";
 
 const Home = () => {
     return (
         <div className=" px-4 my-16">
-            <div>
+            <div className="absolute top-0 mb-48">
                 <Banner></Banner>
             </div>
-            <div className="max-w-7xl mx-auto px-4 my-16">
+            <div className="max-w-7xl mx-auto px-4  mt-[1000px]">
                 <div className="text-center mb-16">
                     <p className="text-[#D99904] mb-4 text-xl">---From 11:00am to 10:00pm---</p>
                     <div className="w-[300px] h-[3px] bg-gray-300 mx-auto"></div>
@@ -19,9 +18,6 @@ const Home = () => {
                     <div className="w-[200px] h-[3px] bg-gray-300 mx-auto"></div>
                 </div>
                 <Category></Category>
-            </div>
-            <div className="max-w-7xl mx-auto px-4 my-16">
-                <SubBanner></SubBanner>
             </div>
             <div className="max-w-7xl mx-auto px-4 my-16">
                 <div className="text-center mb-16">

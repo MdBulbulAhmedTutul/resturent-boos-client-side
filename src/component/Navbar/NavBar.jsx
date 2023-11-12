@@ -1,17 +1,17 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import cartimage from '../../assets/icon/151-1511569_cart-notifications-free-shopping-cart-favicon-hd-png-removebg-preview.png';
 import userImage from '../../assets/icon/user.png';
 const NavBar = () => {
     const navItem = <>
-        <li><NavLink to="/">Home</NavLink></li>
-        <li className="ml-2"><NavLink to="/contact">Contact Us</NavLink></li>
-        <li className="ml-2"><NavLink to="/dashbord">Dashboard</NavLink></li>
-        <li className="ml-2"><NavLink to="/menu">Our Menu</NavLink></li>
-        <li className="ml-2"><NavLink to="/shope">Our Shope</NavLink></li>
+        <li><Link to="/">Home</Link></li>
+        <li className="ml-2"><Link to="/contact">Contact Us</Link></li>
+        <li className="ml-2"><Link to="/dashbord">Dashboard</Link></li>
+        <li className="ml-2"><Link to="/menu">Our Menu</Link></li>
+        <li className="ml-2"><Link to="/shope">Our Shope</Link></li>
     </>
     return (
         <>
-            <div className="navbar fixed top-0 z-10  bg-base-200">
+            <div className="navbar fixed top-0 z-10 bg-black bg-opacity-30 text-white">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
