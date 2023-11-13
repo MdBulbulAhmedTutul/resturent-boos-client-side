@@ -4,8 +4,9 @@ import './Register.css'
 import { useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 import Swal from "sweetalert2";
+import { AiOutlineGoogle } from 'react-icons/ai';
 const Register = () => {
-    const { createUser } = useContext(AuthContext);
+    const { createUser, googleLogin } = useContext(AuthContext);
     const handleRegister = event => {
         event.preventDefault();
         const form = event.target;
@@ -14,6 +15,17 @@ const Register = () => {
         const password = form.password.value;
         console.log(name, email, password)
         createUser(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                Swal.fire("Register Successfull1");
+            })
+            .catch(error => {
+                console.error(error);
+            })
+    }
+    const handleGoogoleRegister = () =>{
+        googleLogin()
         .then(result =>{
             const user = result.user;
             console.log(user);
@@ -52,6 +64,7 @@ const Register = () => {
                         </div>
                         <input className='w-full px-4 py-2 rounded-lg cursor-pointer text-white font-bold my-4 bg-[#ff3438] disabled:bg-gray-400' type="submit" value="Login Now" />
                     </form>
+                    <button onClick={handleGoogoleRegister} className="bg-[#ff3438] font-bold flex items-center justify-center text-white w-full px-4 py-2 rounded-lg ">Login With Google <AiOutlineGoogle className="ml-2 text-2xl"></AiOutlineGoogle></button>
                     <p className="text-center font-semibold">Al ready have an account <Link className="text-[#ff3438] text-xl font-bold" to="/login">Login</Link></p>
                 </div>
             </div>

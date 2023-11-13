@@ -5,6 +5,7 @@ import { AuthContext } from '../providers/AuthProvider';
 import { Link } from 'react-router-dom';
 import './Login.css'
 import Swal from 'sweetalert2';
+import { AiOutlineGoogle } from 'react-icons/ai';
 
 const Login = () => {
     const captchaRef = useRef(null);
@@ -12,7 +13,7 @@ const Login = () => {
     useEffect(() => {
         loadCaptchaEnginge(6);
     }, [])
-    const { loginUser } = useContext(AuthContext);
+    const { loginUser, googleLogin } = useContext(AuthContext);
     const handleLogin = event => {
         event.preventDefault();
         const form = event.target;
@@ -27,6 +28,18 @@ const Login = () => {
             })
             .catch(error => {
                 console.error(error)
+            })
+    }
+
+    const handleGoogoleLogin = () => {
+        googleLogin()
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                Swal.fire("Login Successfull1");
+            })
+            .catch(error => {
+                console.error(error);
             })
     }
 
@@ -71,6 +84,7 @@ const Login = () => {
                         </div>
                         <input disabled={disabled} className='w-full px-4 py-2 rounded-lg cursor-pointer text-white font-bold my-4 bg-[#ff3438] disabled:bg-gray-400' type="submit" value="Login Now" />
                     </form>
+                    <button onClick={handleGoogoleLogin} className="bg-[#ff3438] font-bold flex items-center justify-center text-white w-full px-4 py-2 rounded-lg ">Login With Google <AiOutlineGoogle className="ml-2 text-2xl"></AiOutlineGoogle></button>
                     <p className="text-center font-semibold">Al ready have an account <Link className="text-[#ff3438] text-xl font-bold" to="/register">Register</Link></p>
                 </div>
             </div>
