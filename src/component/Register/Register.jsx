@@ -6,15 +6,28 @@ import { AuthContext } from "../providers/AuthProvider";
 import Swal from "sweetalert2";
 import { AiOutlineGoogle } from 'react-icons/ai';
 const Register = () => {
-    const { createUser, googleLogin } = useContext(AuthContext);
+    const { createUser, googleLogin, updateProfilePicture } = useContext(AuthContext);
     const handleRegister = event => {
         event.preventDefault();
         const form = event.target;
         const name = form.name.value;
+        const photo = form.photo.value;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(name, email, password)
+        console.log(name, photo, email, password)
         createUser(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                Swal.fire("Register Successfull1");
+                updateProfilePicture(name, photo);
+            })
+            .catch(error => {
+                console.error(error);
+            })
+    }
+    const handleGoogoleRegister = () => {
+        googleLogin()
             .then(result => {
                 const user = result.user;
                 console.log(user);
@@ -23,17 +36,6 @@ const Register = () => {
             .catch(error => {
                 console.error(error);
             })
-    }
-    const handleGoogoleRegister = () =>{
-        googleLogin()
-        .then(result =>{
-            const user = result.user;
-            console.log(user);
-            Swal.fire("Register Successfull1");
-        })
-        .catch(error =>{
-            console.error(error);
-        })
     }
     return (
         <div className='login_container'>
@@ -52,6 +54,12 @@ const Register = () => {
                         </div>
                         <div className="form-control w-full">
                             <label className="label w-full">
+                                <span className="label-text">Photo URL</span>
+                            </label>
+                            <input type="text" name='photo' placeholder="Photo URL" className="input input-bordered" required />
+                        </div>
+                        <div className="form-control w-full">
+                            <label className="label w-full">
                                 <span className="label-text">Email</span>
                             </label>
                             <input type="email" name='email' placeholder="Email" className="input input-bordered" required />
@@ -62,7 +70,7 @@ const Register = () => {
                             </label>
                             <input type="password" name='password' placeholder="Password" className="input input-bordered" required />
                         </div>
-                        <input className='w-full px-4 py-2 rounded-lg cursor-pointer text-white font-bold my-4 bg-[#ff3438] disabled:bg-gray-400' type="submit" value="Login Now" />
+                        <input className='w-full px-4 py-2 rounded-lg cursor-pointer text-white font-bold my-4 bg-[#ff3438] disabled:bg-gray-400' type="submit" value="Register Now" />
                     </form>
                     <button onClick={handleGoogoleRegister} className="bg-[#ff3438] font-bold flex items-center justify-center text-white w-full px-4 py-2 rounded-lg ">Login With Google <AiOutlineGoogle className="ml-2 text-2xl"></AiOutlineGoogle></button>
                     <p className="text-center font-semibold">Al ready have an account <Link className="text-[#ff3438] text-xl font-bold" to="/login">Login</Link></p>

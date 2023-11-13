@@ -14,6 +14,7 @@ import OurShopePage from './component/OurShopePage/OurShopePage';
 import ContactPage from './component/ContactPage/ContactPage';
 import AuthProvider from './component/providers/AuthProvider';
 import Register from './component/Register/Register';
+import PrivateRoutes from './component/PrivateRoutes/PrivateRoutes';
 
 const router = createBrowserRouter([
   {
@@ -34,15 +35,15 @@ const router = createBrowserRouter([
       },
       {
         path: '/menu',
-        element: <MenuPages></MenuPages>
+        element: <PrivateRoutes><MenuPages></MenuPages></PrivateRoutes>
       },
       {
         path: '/shope',
-        element: <OurShopePage></OurShopePage>
+        element: <PrivateRoutes><OurShopePage></OurShopePage></PrivateRoutes>
       },
       {
         path: '/contact',
-        element: <ContactPage></ContactPage>
+        element: <PrivateRoutes><ContactPage></ContactPage></PrivateRoutes>
       }
     ]
 

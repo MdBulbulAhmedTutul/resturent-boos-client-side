@@ -7,15 +7,35 @@ const NavBar = () => {
     const { user, logOtuUser } = useContext(AuthContext);
     const navItem = <>
         <li><Link to="/">Home</Link></li>
-        <li className="ml-2"><Link to="/contact">Contact Us</Link></li>
-        <li className="ml-2"><Link to="/dashbord">Dashboard</Link></li>
-        <li className="ml-2"><Link to="/menu">Our Menu</Link></li>
-        <li className="ml-2"><Link to="/shope">Our Shope</Link></li>
+        {
+            user ?
+            <li className="ml-2"><Link to="/contact">Contact Us</Link></li>
+            : []
+        }
+        {
+            user ?
+            <li className="ml-2"><Link to="/dashbord">Dashboard</Link></li>
+            :
+            []
+        }
+        {
+            user ?
+            <li className="ml-2"><Link to="/menu">Our Menu</Link></li>
+            :
+            []
+        }
+        {
+            user ?
+            <li className="ml-2"><Link to="/shope">Our Shope</Link></li>
+            :
+            []
+        }
+
     </>
     const handleLogOut = () => {
         logOtuUser()
-        .then()
-        .catch()
+            .then()
+            .catch()
     }
     return (
         <>
@@ -49,7 +69,12 @@ const NavBar = () => {
                             </Link>
 
                     }
-                    <img className="w-[60px] rounded-full ml-5" src={userImage} alt="" />
+                    {
+                        user ?
+                        <img className="w-[60px] rounded-full ml-5" src={user.photoURL} alt="userImg" />
+                        :
+                        <img className="w-[60px] rounded-full ml-5" src={userImage} alt="userImg" />
+                    }
                 </div>
             </div>
         </>

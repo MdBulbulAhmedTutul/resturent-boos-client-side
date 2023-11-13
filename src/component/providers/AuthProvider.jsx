@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { createUserWithEmailAndPassword, GoogleAuthProvider, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, signInWithPopup } from "firebase/auth";
+import { createUserWithEmailAndPassword, GoogleAuthProvider, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, signInWithPopup, updateProfile } from "firebase/auth";
 import app from "../firebase/firebse.config";
 export const AuthContext = createContext(null);
 // eslint-disable-next-line react/prop-types
@@ -16,7 +16,7 @@ const AuthProvider = ({ children }) => {
     }
 
     // google login
-    const googleLogin = () =>{
+    const googleLogin = () => {
         setLoading(true);
         return signInWithPopup(auth, provider);
     }
@@ -31,6 +31,13 @@ const AuthProvider = ({ children }) => {
     const logOtuUser = () => {
         setLoading(true);
         return signOut(auth);
+    }
+
+    // update profile
+    const updateProfilePicture = (name, photo) => {
+        return updateProfile(auth.currentUser, {
+            displayName: name, photoURL: photo
+        })
     }
 
     // manage user
@@ -52,7 +59,8 @@ const AuthProvider = ({ children }) => {
         createUser,
         loginUser,
         logOtuUser,
-        googleLogin
+        googleLogin,
+        updateProfilePicture
     };
 
 
