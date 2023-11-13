@@ -13,6 +13,7 @@ import MenuPages from './component/MenuPages/MenuPages';
 import OurShopePage from './component/OurShopePage/OurShopePage';
 import ContactPage from './component/ContactPage/ContactPage';
 import AuthProvider from './component/providers/AuthProvider';
+import Register from './component/Register/Register';
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: '/login',
         element: <Login></Login>
+      },
+      {
+        path: '/register',
+        element: <Register></Register>
       },
       {
         path: '/menu',

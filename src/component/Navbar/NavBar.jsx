@@ -1,7 +1,10 @@
 import { Link } from 'react-router-dom';
 import cartimage from '../../assets/icon/151-1511569_cart-notifications-free-shopping-cart-favicon-hd-png-removebg-preview.png';
 import userImage from '../../assets/icon/user.png';
+import { useContext } from 'react';
+import { AuthContext } from '../providers/AuthProvider';
 const NavBar = () => {
+    const { user, logOtuUser } = useContext(AuthContext);
     const navItem = <>
         <li><Link to="/">Home</Link></li>
         <li className="ml-2"><Link to="/contact">Contact Us</Link></li>
@@ -9,6 +12,11 @@ const NavBar = () => {
         <li className="ml-2"><Link to="/menu">Our Menu</Link></li>
         <li className="ml-2"><Link to="/shope">Our Shope</Link></li>
     </>
+    const handleLogOut = () => {
+        logOtuUser()
+        .then()
+        .catch()
+    }
     return (
         <>
             <div className="navbar fixed top-0 z-10 bg-black bg-opacity-30 text-white">
@@ -33,9 +41,14 @@ const NavBar = () => {
                 </div>
                 <div className="navbar-end">
                     <img className="w-[60px] mr-5" src={cartimage} alt="" />
-                    <Link to="/login">
-                        <button className="bg-[#ff3438] text-white px-7 py-2 rounded-lg font-bold">Login</button>
-                    </Link>
+                    {
+                        user ? <button onClick={handleLogOut} className="bg-[#ff3438] text-white px-7 py-2 rounded-lg font-bold">LogOut</button>
+                            :
+                            <Link to="/login">
+                                <button className="bg-[#ff3438] text-white px-7 py-2 rounded-lg font-bold">Login</button>
+                            </Link>
+
+                    }
                     <img className="w-[60px] rounded-full ml-5" src={userImage} alt="" />
                 </div>
             </div>
