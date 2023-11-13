@@ -16,7 +16,8 @@ const Login = () => {
         console.log(email, password)
     }
 
-    const handleValidateCaptcha = () => {
+    const handleValidateCaptcha = event => {
+        event.preventDefault();
         const user_captcha_value = captchaRef.current.value;
         if (validateCaptcha(user_captcha_value)) {
             setDisabled(false);
@@ -51,10 +52,10 @@ const Login = () => {
                                 <LoadCanvasTemplate />
                             </label>
                             <input type="text" ref={captchaRef} name='capthca' placeholder="Type the Text" className="input input-bordered" required />
-                            <button onClick={handleValidateCaptcha}
+                            <button type='button' onClick={handleValidateCaptcha}
                                 className='w-full bg-black text-white px-4 py-1 rounded-lg mt-3'>Validate</button>
                         </div>
-                        <input disabled={disabled} className='w-full px-4 py-2 rounded-lg cursor-pointer text-white font-bold my-4 bg-[#ff3438]' type="submit" value="Login Now" />
+                        <input disabled={disabled} className='w-full px-4 py-2 rounded-lg cursor-pointer text-white font-bold my-4 bg-[#ff3438] disabled:bg-gray-400' type="submit" value="Login Now" />
                     </form>
                 </div>
             </div>
