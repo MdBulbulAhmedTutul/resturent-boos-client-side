@@ -1,35 +1,36 @@
 import { Link } from 'react-router-dom';
-import cartimage from '../../assets/icon/151-1511569_cart-notifications-free-shopping-cart-favicon-hd-png-removebg-preview.png';
 import userImage from '../../assets/icon/user.png';
 import { useContext } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
+import { FaCartPlus } from "react-icons/fa6";
 const NavBar = () => {
     const { user, logOtuUser } = useContext(AuthContext);
     const navItem = <>
         <li><Link to="/">Home</Link></li>
         {
             user ?
-            <li className="ml-2"><Link to="/contact">Contact Us</Link></li>
-            : []
+                <li className="ml-2"><Link to="/contact">Contact Us</Link></li>
+                : []
         }
         {
             user ?
-            <li className="ml-2"><Link to="/dashbord">Dashboard</Link></li>
-            :
-            []
+                <li className="ml-2"><Link to="/dashbord">Dashboard</Link></li>
+                :
+                []
         }
         {
             user ?
-            <li className="ml-2"><Link to="/menu">Our Menu</Link></li>
-            :
-            []
+                <li className="ml-2"><Link to="/menu">Our Menu</Link></li>
+                :
+                []
         }
         {
             user ?
-            <li className="ml-2"><Link to="/shope">Our Shope</Link></li>
-            :
-            []
+                <li className="ml-2"><Link to="/shope">Our Shope</Link></li>
+                :
+                []
         }
+
 
     </>
     const handleLogOut = () => {
@@ -60,7 +61,12 @@ const NavBar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <img className="w-[60px] mr-5" src={cartimage} alt="" />
+                    <Link to="/">
+                        <button className="bg-[#ff3438] flex items-center text-white px-4 py-2 rounded-lg mr-3">
+                            <FaCartPlus className='text-2xl '></FaCartPlus>
+                            <div className="badge badge-secondary ml-2 text-white font-bold">+0</div>
+                        </button>
+                    </Link>
                     {
                         user ? <button onClick={handleLogOut} className="bg-[#ff3438] text-white px-7 py-2 rounded-lg font-bold">LogOut</button>
                             :
@@ -71,9 +77,9 @@ const NavBar = () => {
                     }
                     {
                         user ?
-                        <img className="w-[60px] rounded-full ml-5" src={user.photoURL} alt="userImg" />
-                        :
-                        <img className="w-[60px] rounded-full ml-5" src={userImage} alt="userImg" />
+                            <img className="w-[60px] rounded-full ml-5" src={user.photoURL} alt="userImg" />
+                            :
+                            <img className="w-[60px] rounded-full ml-5" src={userImage} alt="userImg" />
                     }
                 </div>
             </div>
